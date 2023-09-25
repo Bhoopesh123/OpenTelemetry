@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/instance: opentelemetry-demo
+    app.kubernetes.io/version: "10.0.3"
+  name: opentelemetry-demo-grafana-test
+  namespace: otel-demo
+  annotations:
