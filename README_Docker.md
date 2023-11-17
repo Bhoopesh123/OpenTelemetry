@@ -1,4 +1,4 @@
-# Monitoring Microservices application using OpenTelemetry 
+# Monitoring Microservices application using OpenTelemetry via Docker
 Reference Documentation: https://opentelemetry.io/docs/
 
 # 1. Clone the Demo repository:    
