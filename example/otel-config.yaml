@@ -1,0 +1,25 @@
+receivers:
+  loki:
+    protocols:
+      http:
+    use_incoming_timestamp: true
+
+processors:
+  attributes:
+    actions:
+      - action: insert
+        key: loki.attribute.labels
+        value: container
+      - action: insert
+        key: loki.format
+        value: raw
+exporters:
+  loki:
+    endpoint: http://loki:3100/loki/api/v1/push
+
+service:
+  pipelines:
+    logs:
+      receivers: [loki]
+      processors: [attributes]
+      exporters: [loki]
