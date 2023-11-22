@@ -1,7 +1,9 @@
 # Monitoring Microservices application Logs using OTEL Collector via Docker  
 
-OpeTelemetry Reference Documentation: https://opentelemetry.io/docs/  
-Loki Receiver Reference Documentation: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/lokireceiver   
+OpeTelemetry Reference Documentation:  
+https://opentelemetry.io/docs/  
+Loki Receiver Reference Documentation: 
+https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/lokireceiver   
 
 
 Let’s imagine that you collect metrics and traces with OpenTelemetry collector and your application logs with Promtail. 
