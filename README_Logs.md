@@ -2,7 +2,8 @@
 
 OpeTelemetry Reference Documentation:  
 https://opentelemetry.io/docs/  
-Loki Receiver Reference Documentation: 
+
+Loki Receiver Reference Documentation:  
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/lokireceiver   
 
 
