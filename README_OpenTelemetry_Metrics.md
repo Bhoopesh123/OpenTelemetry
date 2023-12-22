@@ -36,6 +36,8 @@ Please run the below commands to install Otel Collector for receiving the metric
     sudo service otelcol-contrib status
 
 # 5. Add the below Dashboard id in Grafana
+To Search all of the time series data points grouping by job
+        count({__name__=~".+"}) by (job)
 
     1860
     15983
