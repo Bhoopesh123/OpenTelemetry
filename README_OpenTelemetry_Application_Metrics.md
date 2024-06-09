@@ -70,7 +70,7 @@ Please run the below commands to install Otel Collector for receiving the metric
     sudo service otelcol-contrib start
     sudo service otelcol-contrib status
 
-# 5. Add the below Dashboard id in Grafana
+# 5. Check the Application metrics on Grafana
 To Search all of the time series data points grouping by job  
 
     count({__name__=~".+"}) by (job)
