@@ -1,4 +1,4 @@
-# Application Metrics Monitoring System  via Telemetry Collector
+# Application Metrics Monitoring System  via OpenTelemetry Collector
 Reference Documentation: https://opentelemetry.io/docs/
 
 # 1. Install Prometheus on Ubuntu Machine:    
@@ -19,9 +19,9 @@ Please follow the below commands to install Springboot Application
     git clone https://github.com/spring-projects/spring-petclinic.git
     cd spring-petclinic
 
-Add below dependencies in pom.xml for emabling metrics endpoint 
+Add below dependencies in pom.xml for enabling metrics endpoint 
 
-    sudo vi pom.xml
+sudo vi pom.xml
 
     <!-- Spring and Spring Boot dependencies -->
     <dependency>
@@ -72,6 +72,7 @@ Please run the below commands to install Otel Collector for receiving the metric
 
 # 5. Add the below Dashboard id in Grafana
 To Search all of the time series data points grouping by job  
+
     count({__name__=~".+"}) by (job)
 
 # 5. Server Requests count for App endpoints
