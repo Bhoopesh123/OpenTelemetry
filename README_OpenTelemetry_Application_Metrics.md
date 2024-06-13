@@ -51,6 +51,11 @@ Start the Petclinic Application
 
     java -jar target/*.jar 
 
+Check the application on port like as below:  
+
+http://localhost:8080
+
+
 # 4. Install OpenTelemetry Collector Agent on Ubuntu Machine:  
 
 Please run the below commands to install Otel Collector for receiving the metrics
