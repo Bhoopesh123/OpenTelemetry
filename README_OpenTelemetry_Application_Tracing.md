@@ -11,8 +11,17 @@ Please refer the below page to install Prometheus on Ubuntu/Linux Box:
 
     https://github.com/Bhoopesh123/Grafana_onprem/blob/main/Grafana.yml
 
+# 3. Install Zipikn on Ubuntu Machine:  
 
-# 3. Install OpenTelemetry Collector Agent on Ubuntu Machine:  
+Reference Documentation: https://zipkin.io/pages/quickstart.html
+
+    brew install zipkin
+    # to run in foreground
+    zipkin
+    # to run in background
+    brew services start zipkin
+
+# 4. Install OpenTelemetry Collector Agent on Ubuntu Machine:  
 
 Please run the below commands to install Otel Collector for receiving the metrics
 
@@ -32,7 +41,7 @@ Please run the below commands to install Otel Collector for receiving the metric
     sudo service otelcol-contrib status
 
 
-# 3. Install Application (Petclinic) on Ubuntu Machine: 
+# 5. Install Application (Petclinic) on Ubuntu Machine: 
 Reference Documentation: https://github.com/spring-projects/spring-petclinic  
 
 Please follow the below commands to install Springboot Application
@@ -98,12 +107,12 @@ Check the application on port like as below:
 http://localhost:8080
 
 
-# 5. Check the Application Traces on Zipkin  
+# 6. Check the Application Traces on Zipkin  
 
 Search All traces on zipkin  
 
     http://localhost:9411/
 
-# 6. Add Zipkin as a Datasource in Grafana and visuaize the traces
+# 7. Add Zipkin as a Datasource in Grafana and visuaize the traces
   
     
