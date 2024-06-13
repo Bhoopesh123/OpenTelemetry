@@ -1,0 +1,89 @@
+extensions:
+  health_check:
+  pprof:
+    endpoint: 0.0.0.0:1777
+  zpages:
+    endpoint: 0.0.0.0:55679
+
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+  opencensus:
+    endpoint: 0.0.0.0:55678
+
+  # Collect own metrics
+  prometheus:
+    config:
+      scrape_configs:
+      - job_name: 'otel-collector'
+        scrape_interval: 10s
+        static_configs:
+        - targets: ['0.0.0.0:8888']
+        
+      - job_name: 'node-exporter'
+        scrape_interval: 10s
+        static_configs:
+        - targets: ['0.0.0.0:9100']
+
+      - job_name: 'petclinic_otel'
+        metrics_path: "/actuator/prometheus"
+        scrape_interval: 10s
+        static_configs:
+        - targets: ['0.0.0.0:8080']
+  
+  #Data source: metrics
+  hostmetrics:
+    collection_interval: 10s
+    scrapers:
+      # CPU utilization metrics
+      cpu:
+      # Disk I/O metrics
+      disk:
+      # File System utilization metrics
+      filesystem:
+      # CPU load metrics
+      load:
+      # Memory utilization metrics
+      memory:
+      # Network interface I/O metrics & TCP connection metrics
+      network:
+      # Paging/Swap space utilization and I/O metrics
+      paging:
+
+  zipkin:
+    endpoint: 0.0.0.0:9411
+
+processors:
+  batch:
+
+exporters:
+  logging:
+    verbosity: detailed
+
+  prometheusremotewrite:
+    endpoint: http://localhost:9090/api/v1/write
+
+  # Data sources: traces
+  zipkin:
+    endpoint: http://localhost:9411/api/v2/spans
+
+service:
+
+  pipelines:
+
+    metrics:
+      receivers: [otlp, prometheus, hostmetrics]
+      processors: [batch]
+      exporters: [prometheusremotewrite]
+
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [zipkin]
+
+  extensions: [health_check, pprof, zpages]
