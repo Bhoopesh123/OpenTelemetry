@@ -2,7 +2,7 @@
 Reference Documentation: https://opentelemetry.io/docs/
 
 # 1. Install ElasticSearch and Kibana on Ubuntu Machine:    
-Please refer the below page to install Prometheus on Ubuntu/Linux Box: 
+Please refer the below page to install Elasticsearch and Kibana on Ubuntu/Linux Box: 
 
     https://github.com/Bhoopesh123/efk-setup/blob/main/README_ELK_Ubuntu.md
 
