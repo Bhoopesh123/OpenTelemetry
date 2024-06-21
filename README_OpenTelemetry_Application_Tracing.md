@@ -78,6 +78,9 @@ Create the maven package
     ./mvnw package -Dmaven.test.skip=true 
 
 Download opentelemetry java agent for Auto Instrumentation  
+Reference Documentation: 
+
+https://github.com/open-telemetry/opentelemetry-java-instrumentation 
 
     wget https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
 
