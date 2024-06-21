@@ -1,4 +1,4 @@
-# Application Metrics Monitoring System  via OpenTelemetry Collector
+# Application Logging Monitoring System  via OpenTelemetry Collector
 Reference Documentation: https://opentelemetry.io/docs/
 
 # 1. Install ElasticSearch and Kibana on Ubuntu Machine:    
@@ -10,12 +10,11 @@ Please refer the below page to install Elasticsearch and Kibana on Ubuntu/Linux 
 
     sudo sh -c 'curl https://packages.fluentbit.io/fluentbit.key | gpg --dearmor > /usr/share/keyrings/fluentbit-keyring.gpg'
     export CODENAME="jammy"
-    echo "deb [signed-by=/usr/share/keyrings/fluentbit-keyring.gpg] https://packages.fluentbit.io/ubuntu/$CODENAME/ \
-    $CODENAME main" | sudo tee /etc/apt/sources.list.d/fluentbit.list
+    echo "deb [signed-by=/usr/share/keyrings/fluentbit-keyring.gpg] https://packages.fluentbit.io/ubuntu/$CODENAME/ \$CODENAME main" | sudo tee /etc/apt/sources.list.d/fluentbit.list
     sudo apt-get update
     sudo apt-get install fluent-bit
     sudo systemctl start fluent-bit
-    systemctl status fluent-bit
+    sudo systemctl status fluent-bit
 
     cd /etc/fluent-bit
 
