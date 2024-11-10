@@ -18,10 +18,12 @@ Please refer the below page to install Prometheus on Cluster:
 
 # 4. Add the below Dashboard id in Grafana  
 
-To Search all of the time series data points grouping by job
+To Search all of the time series data points grouping by job  
+
         count({__name__=~".+"}) by (job)
 
-Add the below dashboards to see the data from Node Exporter and Kube State Metrics exporters.
+Add the below dashboards to see the data from Node Exporter and Kube State Metrics exporters.  
+
     1860
     315
     6417
