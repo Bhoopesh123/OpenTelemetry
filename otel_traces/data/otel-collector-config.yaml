@@ -1,0 +1,31 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      
+processors:
+  batch:
+
+
+exporters:
+  logging:
+    loglevel: debug
+  otlp:
+    endpoint: tempo-prod-04-prod-us-east-0.grafana.net:443
+    headers:
+        authorization: Basic OTE3NzE2OmdsY19leUp2SWpvaU1URTFOakV4T0NJc0ltNGlPaUp6ZEdGamF5MDVOalUyTWpBdGFIUXRkM0pwZEdVdGRHVnRjRzlmZEhKaFkybHVaeUlzSW1zaU9pSXlNMk01WVhWTk1UWXlaekExUWt3M1YzQktXREZ6U0dvaUxDSnRJanA3SW5JaU9pSndjbTlrTFhWekxXVmhjM1F0TUNKOWZRPT0=
+    
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging]
