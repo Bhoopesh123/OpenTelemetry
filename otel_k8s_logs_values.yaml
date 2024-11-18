@@ -1,0 +1,28 @@
+mode: daemonset
+
+image:
+  repository: otel/opentelemetry-collector-k8s
+
+presets:
+  logsCollection:
+    enabled: true
+    includeCollectorLogs: true
+
+config:
+  extensions:
+    basicauth:
+      client_auth: 
+        username: "923400"
+        password: "xx"
+  exporters:
+    otlphttp:
+      endpoint: https://logs-prod-006.grafana.net/otlp
+      auth:
+        authenticator: basicauth
+  service:
+    extensions: [basicauth, health_check]
+    pipelines:
+      logs:
+        exporters:
+          - otlphttp
+
