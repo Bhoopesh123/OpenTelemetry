@@ -5,7 +5,7 @@ Reference Documentation: https://opentelemetry.io/docs/
 Please refer the below page to install Prometheus on Cluster: 
 
     cd app_traces
-    kubectl apply -k .
+    kubectl apply -f .
 
 
 # 3. Install OpenTelemetry Agent on Minikube cluster:    
