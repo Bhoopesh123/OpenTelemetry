@@ -1,0 +1,35 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: single-app-single-collector
+  labels:
+    app: single-app-single-collector
+  namespace: opentelemetry-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: single-app-single-collector
+  template:
+    metadata:
+      labels:
+        app: single-app-single-collector
+    spec:
+      containers:
+      - name: single-app-single-collector
+        imagePullPolicy: Always
+        image: rutush10/otel-autoinstrumentation-fastapi-simple-app:0.0.4
+        ports:
+          - containerPort: 8000
+        envFrom:
+          - configMapRef:
+              name: single-app-single-collector
+        resources:
+          limits:
+            memory: "1Gi"
+            cpu: "0.5"
+          requests:
+            memory: "1Gi"
+            cpu: "0.5"
