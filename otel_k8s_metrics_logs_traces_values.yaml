@@ -8,6 +8,7 @@ presets:
     enabled: true
     includeCollectorLogs: true
 
+
 config:
   receivers:
     prometheus:
