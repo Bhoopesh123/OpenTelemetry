@@ -1,4 +1,4 @@
-# Monitoring Kubernetes Pod Logs via Open Telemetry Collector
+# Monitoring Kubernetes Application via Open Telemetry Collector
 Reference Documentation: https://opentelemetry.io/docs/
 
 # 1. Install Application on Minikube cluster:    

@@ -17,22 +17,22 @@ config:
         - job_name: 'otel-node-exporter'
           scrape_interval: 10s
           static_configs:
-          - targets: ['10.43.63.25:9100']
+          - targets: ['10.43.98.180:9100']
 
   extensions:
     basicauth:
       client_auth: 
         username: "923400"
-        password: "glc_eyJvIjoiMTE1NjExOCIsIm4iOiJzdGFjay05NjU2MjAtaGwtd3JpdGUtbG9nc193cml0ZSIsImsiOiI1REsyNFh4SzF0dzU0OEZmRWlSNDk1SFgiLCJtIjp7InIiOiJwcm9kLXVzLWVhc3QtMCJ9fQ=="
+        password: "xx=="
     basicauth/2:
       client_auth: 
         username: "1646953"
-        password: "glc_eyJvIjoiMTE1NjExOCIsIm4iOiJzdGFjay05NjU2MjAtaG0td3JpdGUtbWV0cmljczIxIiwiayI6IjUwNTI4b1lpdDZBMDI4d05PZUZrMmdyTCIsIm0iOnsiciI6InByb2QtdXMtZWFzdC0wIn19"
+        password: "xx"
   exporters:
     otlp:
       endpoint: tempo-prod-04-prod-us-east-0.grafana.net:443
       headers:
-          authorization: Basic OTE3NzE2OmdsY19leUp2SWpvaU1URTFOakV4T0NJc0ltNGlPaUp6ZEdGamF5MDVOalUyTWpBdGFIUXRkM0pwZEdVdGRHVnRjRzlmZEhKaFkybHVaeUlzSW1zaU9pSXlNMk01WVhWTk1UWXlaekExUWt3M1YzQktXREZ6U0dvaUxDSnRJanA3SW5JaU9pSndjbTlrTFhWekxXVmhjM1F0TUNKOWZRPT0=
+          authorization: Basic xx=
     otlphttp:
       endpoint: https://logs-prod-006.grafana.net/otlp
       auth:
