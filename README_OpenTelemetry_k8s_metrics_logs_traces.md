@@ -8,6 +8,12 @@ Please refer the below page to install Prometheus on Cluster:
     
     kubectl apply -f .
 
+# 2. Install Prometheus Node Exporter on Minikube Cluster
+
+    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts 
+    helm repo update
+    helm install node-exporter prometheus-community/prometheus-node-exporter
+
 
 # 3. Install OpenTelemetry Agent on Minikube cluster:    
 
