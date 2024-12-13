@@ -1,0 +1,17 @@
+server:
+  extraArgs:
+    web.config.file: /etc/config/web.yml
+
+  extraFlags:
+    - web.enable-remote-write-receiver
+
+  probeHeaders:
+  - name: Authorization
+    value: Basic YWRtaW46c29tZXBhc3M=
+
+
+serverFiles:
+  web.yml:
+    basic_auth_users:
+      # basic auth pass: somepass
+      admin: $2b$12$pObGyYVxitg4daonMxu4a.sKL7mC8U98JxkSXtkqmAB1QjNdum1lu
