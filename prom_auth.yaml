@@ -7,6 +7,7 @@ server:
 
   probeHeaders:
   - name: Authorization
+    # admin:somepass
     value: Basic YWRtaW46c29tZXBhc3M=
 
 
