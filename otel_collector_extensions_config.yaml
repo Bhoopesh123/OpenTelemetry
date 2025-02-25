@@ -1,0 +1,4 @@
+extensions:
+  health_check:
+  pprof:
+  zpages:

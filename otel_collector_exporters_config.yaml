@@ -1,0 +1,52 @@
+exporters:
+  # Data sources: traces, metrics, logs
+  file:
+    path: ./filename.json
+
+  # Data sources: traces
+  otlp/jaeger:
+    endpoint: jaeger-server:4317
+    tls:
+      cert_file: cert.pem
+      key_file: cert-key.pem
+
+  # Data sources: traces, metrics, logs
+  kafka:
+    protocol_version: 2.0.0
+
+  # Data sources: traces, metrics, logs
+  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`
+  debug:
+    verbosity: detailed
+
+  # Data sources: traces, metrics
+  opencensus:
+    endpoint: otelcol2:55678
+
+  # Data sources: traces, metrics, logs
+  otlp:
+    endpoint: otelcol2:4317
+    tls:
+      cert_file: cert.pem
+      key_file: cert-key.pem
+
+  # Data sources: traces, metrics
+  otlphttp:
+    endpoint: https://otlp.example.com:4318
+
+  # Data sources: metrics
+  prometheus:
+    endpoint: 0.0.0.0:8889
+    namespace: default
+
+  # Data sources: metrics
+  prometheusremotewrite:
+    endpoint: http://prometheus.example.com:9411/api/prom/push
+    # When using the official Prometheus (running via Docker)
+    # endpoint: 'http://prometheus:9090/api/v1/write', add:
+    # tls:
+    #   insecure: true
+
+  # Data sources: traces
+  zipkin:
+    endpoint: http://zipkin.example.com:9411/api/v2/spans

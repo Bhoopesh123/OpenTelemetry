@@ -1,0 +1,69 @@
+processors:
+  # Data sources: traces
+  attributes:
+    actions:
+      - key: environment
+        value: production
+        action: insert
+      - key: db.statement
+        action: delete
+      - key: email
+        action: hash
+
+  # Data sources: traces, metrics, logs
+  batch:
+
+  # Data sources: metrics, metrics, logs
+  filter:
+    error_mode: ignore
+    traces:
+      span:
+        - 'attributes["container.name"] == "app_container_1"'
+        - 'resource.attributes["host.name"] == "localhost"'
+        - 'name == "app_3"'
+      spanevent:
+        - 'attributes["grpc"] == true'
+        - 'IsMatch(name, ".*grpc.*")'
+    metrics:
+      metric:
+        - 'name == "my.metric" and resource.attributes["my_label"] == "abc123"'
+        - 'type == METRIC_DATA_TYPE_HISTOGRAM'
+      datapoint:
+        - 'metric.type == METRIC_DATA_TYPE_SUMMARY'
+        - 'resource.attributes["service.name"] == "my_service_name"'
+    logs:
+      log_record:
+        - 'IsMatch(body, ".*password.*")'
+        - 'severity_number < SEVERITY_NUMBER_WARN'
+
+  # Data sources: traces, metrics, logs
+  memory_limiter:
+    check_interval: 5s
+    limit_mib: 4000
+    spike_limit_mib: 500
+
+  # Data sources: traces
+  resource:
+    attributes:
+      - key: cloud.zone
+        value: zone-1
+        action: upsert
+      - key: k8s.cluster.name
+        from_attribute: k8s-cluster
+        action: insert
+      - key: redundant-attribute
+        action: delete
+
+  # Data sources: traces
+  probabilistic_sampler:
+    hash_seed: 22
+    sampling_percentage: 15
+
+  # Data sources: traces
+  span:
+    name:
+      to_attributes:
+        rules:
+          - ^\/api\/v1\/document\/(?P<documentId>.*)\/update$
+      from_attributes: [db.svc, operation]
+      separator: '::'

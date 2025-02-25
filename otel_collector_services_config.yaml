@@ -1,0 +1,10 @@
+service:
+  pipelines:
+    metrics:
+      receivers: [opencensus, prometheus]
+      processors: [batch]
+      exporters: [opencensus, prometheus]
+    traces:
+      receivers: [opencensus, jaeger]
+      processors: [batch, memory_limiter]
+      exporters: [opencensus, zipkin]
