@@ -26,18 +26,21 @@ Observability is the ability to understand the internal state of a system by exa
 # 4. Why OpenTelemetry?  
 OpenTelemetry satisfies the need for observability while following two key principles:
 
-You own the data that you generate. There’s no vendor lock-in.
-You only have to learn a single set of APIs and conventions.
-Both principles combined grant teams and organizations the flexibility they need in today’s modern computing world.
+You own the data that you generate. There’s no vendor lock-in.  
+You only have to learn a single set of APIs and conventions.  
+Both principles combined grant teams and organizations the flexibility they need in today’s modern computing world.  
 
 # 5. Collector 
 
 Vendor-agnostic way to receive, process and export telemetry data.
 
-The OpenTelemetry Collector offers a vendor-agnostic implementation of how to receive, process and export telemetry data. 
+The OpenTelemetry Collector offers a vendor-agnostic implementation of how to receive, process and export telemetry data.   
+
 It removes the need to run, operate, and maintain multiple agents/collectors. 
+
 This works with improved scalability and supports open source observability data formats (e.g. Jaeger, Prometheus, Fluent Bit, etc.) sending to one or more open source or commercial backends. 
-The local Collector agent is the default location to which instrumentation libraries export their telemetry data.
+
+The local Collector agent is the default location to which instrumentation libraries export their telemetry data.  
 
 # 6. Collector Configuration structure  
 
@@ -55,8 +58,10 @@ Receivers collect telemetry from one or more sources. They can be pull or push b
 # 8. Processors 
 
 Processors take the data collected by receivers and modify or transform it before sending it to the exporters. 
+
 Data processing happens according to rules or settings defined for each processor, which might include filtering, dropping, renaming, or recalculating telemetry, among other operations. 
-The order of the processors in a pipeline determines the order of the processing operations that the Collector applies to the signal.
+
+The order of the processors in a pipeline determines the order of the processing operations that the Collector applies to the signal.  
 
 # 8. Exporters 
 
@@ -66,7 +71,11 @@ Each key within the exporters section defines an exporter instance, The key foll
 
 # 9. Connectors 
 
-Connectors join two pipelines, acting as both exporter and receiver. A connector consumes data as an exporter at the end of one pipeline and emits data as a receiver at the beginning of another pipeline. The data consumed and emitted may be of the same type or of different data types. You can use connectors to summarize consumed data, replicate it, or route it.
+Connectors join two pipelines, acting as both exporter and receiver. 
+
+A connector consumes data as an exporter at the end of one pipeline and emits data as a receiver at the beginning of another pipeline.  
+
+The data consumed and emitted may be of the same type or of different data types. You can use connectors to summarize consumed data, replicate it, or route it.  
 
 You can configure one or more connectors using the connectors section of the Collector configuration file. By default, no connectors are configured. Each type of connector is designed to work with one or more pairs of data types and may only be used to connect pipelines accordingly.  
 
