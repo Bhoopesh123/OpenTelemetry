@@ -21,11 +21,11 @@ data:
           - job_name: 'otel-node-exporter'
             scrape_interval: 10s
             static_configs:
-            - targets: ['10.43.217.43:9100']
+            - targets: ['10.43.213.111:9100']
           - job_name: 'otel-kube-state-metrics'
             scrape_interval: 10s
             static_configs:
-            - targets: ['10.43.68.112:8080']
+            - targets: ['10.43.212.68:8080']
 
     processors:
       batch:

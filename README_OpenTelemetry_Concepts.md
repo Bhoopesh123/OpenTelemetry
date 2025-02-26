@@ -111,7 +111,7 @@ The use and expansion of environment variables is supported in the Collector con
 
     helm repo add prometheus-community https://prometheus-community.github.io/helm-charts 
     helm repo update
-    helm  upgrade --install my-prometheus prometheus-community/prometheus -f prom_auth.yaml
+    helm  upgrade --install prometheus prometheus-community/prometheus -f prometheus.yaml
 
 
 # 14. Install Grafana on Minikube cluster:    
@@ -123,7 +123,7 @@ Please refer the below page to install Prometheus on Cluster:
 
 # 15. Install OpenTelemetry Agent on Minikube cluster:    
 
-    kubectl apply -f otel_k8s_config_auth.yaml
+    kubectl apply -f otel_k8s_config.yaml
 
 # 16. Validate the Data(Metrics) on Grafana
 
