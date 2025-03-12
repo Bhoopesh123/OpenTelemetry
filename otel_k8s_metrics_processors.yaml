@@ -1,0 +1,102 @@
+mode: deployment
+
+image:
+  repository: otel/opentelemetry-collector-k8s
+
+presets:
+  logsCollection:
+    enabled: true
+    includeCollectorLogs: true
+
+
+config:
+  receivers:
+    prometheus:
+      config:
+        scrape_configs:
+        - job_name: 'otel-node-exporter'
+          scrape_interval: 10s
+          static_configs:
+          - targets: ['10.43.102.229:9100']
+
+  # processors:
+  #   filter/exclude:
+  #     metrics:
+  #       exclude:
+  #         match_type: strict
+  #         metric_names:
+  #           - node_cpu_seconds_total
+  #           - node_filesystem_avail_bytes
+
+  #   # filter/include:
+  #   #   metrics:
+  #   #     include:
+  #   #       match_type: strict
+  #   #       metric_names:
+  #   #         - node_cpu_seconds_total
+  #   #         - node_filesystem_avail_bytes
+
+  #   # filter/include:
+  #   #   # any names NOT matching filters are excluded from remainder of pipeline
+  #   #   metrics:
+  #   #     include:
+  #   #       match_type: regexp
+  #   #       metric_names:
+  #   #         # re2 regexp patterns
+  #   #         - node_*
+
+  #   filter/include:
+  #     # any names NOT matching filters are excluded from remainder of pipeline
+  #     metrics:
+  #       include:
+  #         match_type: regexp
+  #         metric_names:
+  #           # re2 regexp patterns
+  #           # - prefix/.*
+  #           # - prefix_.*
+  #           # - .*/suffix
+  #           # - .*_suffix
+  #           # - .*/contains/.*
+  #           - .*_bytes
+  #           # - full/name/match
+  #           # - full_name_match
+
+
+  extensions:
+    basicauth:
+      client_auth: 
+        username: "923400"
+        password: "glc_eyJvIjoiMTE1NjExOCIsIm4iOiJzdGFjay05NjU2MjAtaGwtd3JpdGUtbG9nc193cml0ZSIsImsiOiI1REsyNFh4SzF0dzU0OEZmRWlSNDk1SFgiLCJtIjp7InIiOiJwcm9kLXVzLWVhc3QtMCJ9fQ=="
+    basicauth/2:
+      client_auth: 
+        username: "1646953"
+        password: "glc_eyJvIjoiMTE1NjExOCIsIm4iOiJzdGFjay05NjU2MjAtaG0td3JpdGUtbWV0cmljczIxIiwiayI6IjUwNTI4b1lpdDZBMDI4d05PZUZrMmdyTCIsIm0iOnsiciI6InByb2QtdXMtZWFzdC0wIn19"
+  exporters:
+    otlp:
+      endpoint: tempo-prod-04-prod-us-east-0.grafana.net:443
+      headers:
+          authorization: Basic xx=
+    otlphttp:
+      endpoint: https://logs-prod-006.grafana.net/otlp
+      auth:
+        authenticator: basicauth
+    otlphttp/2:
+      endpoint: https://prometheus-prod-13-prod-us-east-0.grafana.net/otlp
+      auth:
+        authenticator: basicauth/2
+
+  service:
+      extensions: [basicauth,basicauth/2,health_check]
+      pipelines:
+        traces:
+          exporters:
+            - otlp
+        logs:
+          exporters:
+            - otlphttp
+        metrics:
+          # processors:
+          #   # - filter/exclude
+          #   - filter/include
+          exporters:
+            - otlphttp/2
